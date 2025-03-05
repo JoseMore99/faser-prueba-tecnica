@@ -7,6 +7,7 @@
 			<th>Id</th>
 			<th>Título</th>
 			<th>Minutos</th>
+			<th>Seleccionar</th>
 		  </tr>
 		</thead>
 		<tbody>
@@ -14,6 +15,7 @@
 			<td>{{ tarea.id }}</td>
 			<td>{{ tarea.titulo }}</td>
 			<td>{{ tarea.minutos }} minutos</td>
+			<td><input type="checkbox" (change)="seleccionarTarea(tarea.id, $event)"></td>
 		  </tr>
 		</tbody>
 	  </table>

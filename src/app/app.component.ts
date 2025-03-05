@@ -23,8 +23,21 @@ export class AppComponent {
 		this.tareas = await this.service.obtenerTareas();
 	}
 	
-	 addTarea(titulo:string,minutos:number) {
+	addTarea(titulo:string,minutos:number) {
 		// Llama al servicio para agregar una nueva tarea 
 		this.service.addTarea(titulo,minutos,this.tareas);
 	}
+
+	seleccionarTarea(id: number, event: any) {
+		//Se manda event como parametro para capturar si esta seleccionado el checkbox o no
+		if (event.target.checked) {
+		  this.tareas.find(tarea => tarea.id === id).seleccionado=true
+		} else {
+			this.tareas.find(tarea => tarea.id === id).seleccionado=false
+		}
+		/* Se utiliza la funcion find para encntrar la tarea que coincida con el id proporcionado como parametro
+		y se cambia el valor de la variable "seleccionado" segun corresponda*/
+
+		//console.log(this.tareas.find(tarea => tarea.id === id))
+	  }
 }
