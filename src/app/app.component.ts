@@ -63,7 +63,7 @@ export class AppComponent {
 		//Usamos el metodo burbuja para hacer el ordenamiento
 		for (let i = 0; i < n - 1; i++) {
 			for (let j = 0; j < n - 1 - i; j++) {
-				if (filtro==1) {//Acciones a realizar si es por id
+				if (filtro == 1) {//Acciones a realizar si es por id
 					let A = this.tareas[j].id;
 					let B = this.tareas[j + 1].id;
 
@@ -73,7 +73,7 @@ export class AppComponent {
 						this.tareas[j] = this.tareas[j + 1];
 						this.tareas[j + 1] = temp;
 					}
-				}else if (filtro==3) {//Acciones a realizar si es por minutos
+				} else if (filtro == 3) {//Acciones a realizar si es por minutos
 					let A = this.tareas[j].minutos;
 					let B = this.tareas[j + 1].minutos;
 
@@ -83,7 +83,7 @@ export class AppComponent {
 						this.tareas[j] = this.tareas[j + 1];
 						this.tareas[j + 1] = temp;
 					}
-				}else if (filtro==4) {//Acciones a realizar si es por Seleccion
+				} else if (filtro == 4) {//Acciones a realizar si es por Seleccion
 					//Para seleccion el orden sera ya sea subiendo a los que estan todos los seleccionados o bajandolos 
 					let A = this.tareas[j].seleccionado;
 					let B = this.tareas[j + 1].seleccionado;
@@ -94,11 +94,11 @@ export class AppComponent {
 						this.tareas[j] = this.tareas[j + 1];
 						this.tareas[j + 1] = temp;
 					}
-				}else if (filtro==2) {//Acciones a realizar si es por titulo
+				} else if (filtro == 2) {//Acciones a realizar si es por titulo
 					//Para titulo el orden sera por orden alfabetico
 					let A = this.tareas[j].titulo;
 					let B = this.tareas[j + 1].titulo;
-					
+
 					// Si es titulo se convertiran a minusculas para evitar problemas de orden
 					if (typeof A === 'string') A = A.toLowerCase();
 					if (typeof B === 'string') B = B.toLowerCase();
@@ -114,21 +114,26 @@ export class AppComponent {
 		}
 		switch (filtro) {// Alternar orden para el siguiente ordenamiento
 			case 1:
-				this.ordenId = !this.ordenId; 
+				this.ordenId = !this.ordenId;
 				break;
 			case 2:
 				this.ordenTitulo = !this.ordenTitulo;
 				break;
 			case 3:
-				this.ordenminutis = !this.ordenminutis; 
+				this.ordenminutis = !this.ordenminutis;
 				break;
 			case 4:
-				this.ordenSeleccion = !this.ordenSeleccion; 
-				break;
-		
-			default:
+				this.ordenSeleccion = !this.ordenSeleccion;
 				break;
 		}
 	}
 
+	destacarTarea() {
+		//Se recorre la lista de tareas para ver cuales estan seleccionada y estas cambiar su atributo de destacado a true
+		this.tareas.forEach(tarea => {
+			if (tarea.seleccionado) {
+				tarea.destacado = true;
+			}
+		});
+	}
 }

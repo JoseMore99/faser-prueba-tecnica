@@ -11,9 +11,10 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr *ngFor="let tarea of tareas">
-				<td>{{ tarea.id }}</td>
-				<td>{{ tarea.titulo }}</td>
+			<tr *ngFor="let tarea of tareas" >
+				<td >{{ tarea.id }}</td>
+				<td *ngIf="tarea.destacado" style="background-color: #78f95b;">{{ tarea.titulo }}{{ tarea.destacado ? '✰' : '' }}</td>
+        		<td *ngIf="!tarea.destacado">{{ tarea.titulo }}</td>
 				<td>{{ tarea.minutos }} minutos</td>
 				<td><input type="checkbox" (change)="seleccionarTarea(tarea.id, $event)"></td>
 			</tr>
@@ -25,5 +26,7 @@
 	<button (click)="addTarea(tituloInput.value,minutosInput.value)">Agregar</button>
 	<h3>Eliminar tareas selecionadas</h3>
 	<button (click)="deleteTarea()">Eliminar</button>
+	<h3>Destacar tareas selecionadas</h3>
+	<button (click)="destacarTarea()">Destacar</button>
 
 </div>
