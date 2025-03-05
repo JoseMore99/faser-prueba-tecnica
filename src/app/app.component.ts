@@ -136,4 +136,12 @@ export class AppComponent {
 			}
 		});
 	}
+
+	//Funcion para ordenar de forma aleatoria la lista de tareas
+	ordenarAleatoria() {
+		/*la funcion sort sirve para ordenar bajo los parametros que se le pase,
+		Math.random genera un numero aleatorio entre 0 y 1 y se le resta -0.5 para
+		que se generen negativos y positivos aleatorios y asi sort hace las comparativas de estos*/ 
+		this.tareas.sort(() => Math.random()-0.5);
+	}
 }
