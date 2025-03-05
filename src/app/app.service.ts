@@ -34,4 +34,17 @@ export class AppService {
             console.error('Error al agregar tarea:', error);
         }
     }
+    
+    //Funcion para eliminar una nueva tarea 
+    public async deleteTarea(tareas:Tarea[]) {
+        try {
+            /*Se utiliza la funcion filter para obtener un nuevo array
+            En este caso el nuevo array sera con todas las tareas no 
+            seleccionadas  y las retorna*/
+            tareas = tareas.filter(tarea => tarea.seleccionado==false);
+            return tareas;
+        } catch (error) {
+            console.error('Error al eliminar una tarea:', error);
+        }
+    }
 }

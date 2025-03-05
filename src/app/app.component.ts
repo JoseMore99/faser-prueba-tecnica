@@ -40,4 +40,9 @@ export class AppComponent {
 
 		//console.log(this.tareas.find(tarea => tarea.id === id))
 	  }
+
+	  async deleteTarea(){
+		// Llama al servicio para eliminar tarea seleccionadas
+		this.tareas = await this.service.deleteTarea(this.tareas);
+	 }
 }
