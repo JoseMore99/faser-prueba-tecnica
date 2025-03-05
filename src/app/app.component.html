@@ -4,15 +4,22 @@
 	<table border="1">
 		<thead>
 		  <tr>
+			<th>Id</th>
 			<th>Título</th>
 			<th>Minutos</th>
 		  </tr>
 		</thead>
 		<tbody>
 		  <tr *ngFor="let tarea of tareas">
+			<td>{{ tarea.id }}</td>
 			<td>{{ tarea.titulo }}</td>
 			<td>{{ tarea.minutos }} minutos</td>
 		  </tr>
 		</tbody>
 	  </table>
+	  <h2>Agregar nueva tarea</h2>
+		<input type="text" placeholder="Titulo" #tituloInput >
+		<input type="number" placeholder="Duracion" #minutosInput >
+		<button (click)="addTarea(tituloInput.value,minutosInput.value)">Agregar</button>
+
 </div>

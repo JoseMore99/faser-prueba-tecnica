@@ -20,4 +20,18 @@ export class AppService {
             return null;
         }
     }
+
+    //Funcion para añadir una nueva tarea 
+    public addTarea(titulo:string,minutos:number, tareas:Tarea[]) {
+        try {
+            // Se genera un nuevo id basado en el último disponible del listado de tareas 
+            const nuevoId =  Math.max(...tareas.map(t => t.id)) + 1;
+            //Se crea una nueva tarea y se inserta en el listado de tareas
+            const nuevaTarea:Tarea = new Tarea(nuevoId,titulo,minutos);
+            tareas.push(nuevaTarea);
+            //console.log(tareas)
+        } catch (error) {
+            console.error('Error al agregar tarea:', error);
+        }
+    }
 }
